@@ -1,0 +1,31 @@
+armed poll before relaunch: valid
+fm-control.sh relaunch exit=0
+warning: /tmp/fm-relaunch-evidence.p0rTmD/manual-24740/home/data/rel2370/brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+relaunched rel2370 harness=claude from=claude model=default effort=default backend=tmux endpoint=fmses:fm-rel2370 worktree=/tmp/fm-relaunch-evidence.p0rTmD/manual-24740/wt
+persisted state/rel2370.meta after relaunch:
+  window=fmses:fm-rel2370
+  endpoint_task_id=rel2370
+  worktree=/tmp/fm-relaunch-evidence.p0rTmD/manual-24740/wt
+  project=/tmp/fm-relaunch-evidence.p0rTmD/manual-24740/proj
+  harness=claude
+  kind=ship
+  mode=no-mistakes
+  yolo=off
+  tasktmp=/tmp/fm-rel2370
+  model=default
+  effort=default
+  busy_gen=g1787033932.32488.31787
+  spawn_gen=s1787033932.32334.9917
+  control_relaunch_tx=32103.20260818T061852Z.20408
+  decisions_reviewed=1
+  x_request=request-19
+  x_request_ts=1700000000
+  x_followups=1
+  x_platform=x
+  x_reply_max_chars=280
+  traceparent=00-4e3bf35db572c199d1a86372879e91d0-d3bfc35115f0c175-01
+  pr=https://github.com/example/repo/pull/2370
+  pr_head=0123456789abcdef0123456789abcdef01234567
+fm_pr_metadata_identity_parse=accepted provider=github number=2370 url=https://github.com/example/repo/pull/2370
+fm_pr_poll_artifacts_valid=accepted sidecar=github|https://github.com/example/repo/pull/2370|github.com|example/repo|2370|
+traceparent_valid=yes value=00-4e3bf35db572c199d1a86372879e91d0-d3bfc35115f0c175-01

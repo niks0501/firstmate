@@ -1,0 +1,105 @@
+
+=== S1 watcher auto-cleans a finished direct report ===
+lane before: kind=ship state=done recorded PR=https://github.com/o/r/pull/1
+crew state: state: done · source: run-step · run passed: PR merged · run: RUNFIXTURE
+watcher rc=0
+--- watcher stdout ---
+check: /tmp/fm-lab.u9p2Ay/home/state/task-a.check.sh: merged; lane automatically cleaned up
+--- watcher stderr (tail) ---
+observed notice: lane automatically cleaned up
+task record removed by the guarded teardown
+status log removed
+durable wake queue carries the cleanup notice
+merge-notified marker survived the cleanup
+SCENARIO RESULT: PASS (watcher auto-clean)
+
+=== S2 self-merge auto-cleans a finished direct report ===
+running the real merge entrypoint: bin/fm-pr-merge.sh task-a https://github.com/o/r/pull/1
+merge rc=0
+--- merge stderr (tail) ---
+●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+●  WATCHER DOWN - SUPERVISION IS OFF
+●  1 task(s) in flight, but no live watcher process holds this home lock (last beat: 1s ago).
+●  Trust the emitted supervision protocol for this harness; do not use shell & for watcher repair.
+●  This is a supervision warning only; the guarded operation WILL still run.
+●  repair a missing or failed watcher cycle with the Pi tool fm_watch_arm_pi, or restart Pi with -e /home/aki/.no-mistakes/worktrees/bab179a0832d/01M5MPJ3SB178C11CR10R9G9NP/.pi/extensions/fm-primary-turnend-guard.ts -e /home/aki/.no-mistakes/worktrees/bab179a0832d/01M5MPJ3SB178C11CR10R9G9NP/.pi/extensions/fm-primary-pi-watch.ts if the extensions are not loaded.
+●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+verified: https://github.com/o/r/pull/1 is open and mergeable, with every unwaived required check reported and every unwaived check green at head 0123456789abcdef0123456789abcdef01234567
+--- durable wake rows ---
+1792774473	1	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1
+1792774475	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up
+cleanup outcome is the last row for the merge key
+task record removed by the guarded teardown
+SCENARIO RESULT: PASS (self-merge auto-clean)
+
+=== S3 in-flight lane stays untouched ===
+status log: working: applying the fix
+crew state: state: working · source: run-step · validating (running) · run: RUNFIXTURE
+watcher rc=0
+--- watcher stdout ---
+check: /tmp/fm-lab.DKA3FT/home/state/task-a.check.sh: merged
+--- durable wake rows ---
+1792774476	1	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external
+plain merge notice preserved for the in-flight lane
+in-flight task record preserved
+no worktree-pool return happened
+SCENARIO RESULT: PASS (in-flight lane untouched)
+
+=== S4 secondmate lane keeps the notice-only behavior ===
+watcher rc=0
+--- watcher stdout ---
+check: /tmp/fm-lab.LPyJ9b/home/state/task-a.check.sh: merged
+--- upward parent channel ---
+done [key=child-outcome-task-a-done-544dad6e] [at=1792774479]: child task-a done: PR https://github.com/o/r/pull/1 checks green pr=https://github.com/o/r/pull/1 mode=no-mistakes
+done [key=merged-task-a] [at=1792774479]: merged task-a https://github.com/o/r/pull/1 external
+no auto-cleanup in the secondmate home
+secondmate lane record preserved
+merge still reported upward to the parent
+SCENARIO RESULT: PASS (secondmate lane notice-only)
+
+=== S5 refused cleanup surfaces its reason without forcing ===
+watcher rc=0
+--- watcher stdout ---
+check: /tmp/fm-lab.IPk3zl/home/state/task-a.check.sh: merged; automatic cleanup refused: REFUSED: worktree /tmp/fm-lab.IPk3zl/case/wt has uncommitted changes.
+--- durable wake rows ---
+1792774482	1	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external
+1792774484	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external; automatic cleanup refused: REFUSED: worktree /tmp/fm-lab.IPk3zl/case/wt has uncommitted changes.
+refusal reason surfaced on the merge notice
+refused cleanup left the task record intact
+worktree and its uncommitted work preserved
+SCENARIO RESULT: PASS (refused cleanup)
+
+=== S6 late duplicate after cleanup cannot publish a plainer notice ===
+first watcher rc=0
+check: /tmp/fm-lab.IHRyLG/home/state/task-a.check.sh: merged; lane automatically cleaned up
+wake rows for the merge key after cleanup: 2
+merge-notified marker still present after cleanup
+--- driving the same merge-outcome emitter the watcher and merge entrypoint use, for a late duplicate ---
+ALREADY_RECORDED=true
+late duplicate was absorbed as already published
+wake rows for the merge key after the duplicate: 2
+no second, plainer notice was published
+last row still carries the cleanup outcome: 1792774488	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external; lane automatically cleaned up
+SCENARIO RESULT: PASS (late duplicate absorbed)
+
+=== S8 done lane with a different recorded deliverable is not cleaned ===
+lane before: kind=ship state=done recorded PR=https://github.com/o/r/pull/2; merged poll names https://github.com/o/r/pull/1
+watcher rc=0
+--- watcher stdout ---
+check: /tmp/fm-lab.2OgBl0/home/state/task-a.check.sh: merged
+--- durable wake rows ---
+1792774489	1	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external
+no cleanup for the mismatched deliverable
+task record preserved
+SCENARIO RESULT: PASS (deliverable mismatch)
+
+=== S7 supervision-branch prompt guidance ===
+40-Claim the task's lease and run `bin/fm-teardown.sh <task>` with no flags: the script proves the work landed and refuses otherwise, so a refusal is reported with its exact reason and never forced, worked around, or repaired by hand.
+41-Report the cleanup in that event's outcome with the PR's URL.
+42:When that wake reports `lane automatically cleaned up`, this home already ran that cleanup: run no teardown for it and report that the lane is closed, with the PR's URL.
+43-
+44-For a completed scout, follow the scout-completion and captain-hold-lifecycle policies included below in both postures.
+emitted prompt tells the actor to skip teardown for an auto-cleaned lane
+SCENARIO RESULT: PASS (branch prompt guidance)
+
+SUMMARY: S1=0 S2=0 S3=0 S4=0 S5=0 S6=0 S8=0 S7=0

@@ -1,0 +1,2 @@
+1792827572	1	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1
+1792827572	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1; automatic cleanup refused: error: refusing fleet lifecycle from inside a no-mistakes gate worktree (/home/aki/.no-mistakes/repos/bab179a0832d.git)

@@ -1,0 +1,8 @@
+=== case 1: FM_HOME only (no supervision overrides)
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab-gate-home-only.hoaCdu
+teardown task-a complete (window firstmate:fm-task-a, worktree /tmp/fm-lab-gate-home-only.hoaCdu/treehouse/.treehouse/proj-5aa1c2/1/proj)
+=== case 2: the redundant overrides minus FM_DATA_OVERRIDE (root/state/config)
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab-gate-no-data.nYCjsJ
+teardown task-a complete (window firstmate:fm-task-a, worktree /tmp/fm-lab-gate-no-data.nYCjsJ/treehouse/.treehouse/proj-4b2a2a/1/proj)
+=== case 3: the exact environment the new automatic cleanup passes (adds FM_DATA_OVERRIDE)
+error: refusing fleet lifecycle from inside a no-mistakes gate worktree (/home/aki/.no-mistakes/repos/bab179a0832d.git)

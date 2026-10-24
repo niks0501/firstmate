@@ -1,0 +1,13 @@
+--- fm-pr-merge.sh rc=0
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; automatic cleanup refused: error: refusing fleet lifecycle from inside a no-mistakes gate worktree (/home/aki/.no-mistakes/repos/bab179a0832d.git)
+FAIL merge entrypoint output reports the automatic cleanup to its caller (missing: check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up)
+FAIL durable merge notice carries the cleanup outcome (missing: check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up)
+FAIL the finished lane's records survived its automatic cleanup
+FAIL the lane's worktree slot was not returned: base  main  (repository default)
+1     leased       /tmp/fm-lab-self-merge.gmHuNl/treehouse/.treehouse/proj-6811f0/1/proj  [fm/task]
+                   bash (399448)
+FAIL the lane's tmux window was really closed (unexpected: fm-task-a)
+PASS the merge-notification identity survived the cleanup
+RESULT: 5 assertion(s) failed

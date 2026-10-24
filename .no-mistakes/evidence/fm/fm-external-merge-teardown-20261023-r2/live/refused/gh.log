@@ -1,0 +1,7 @@
+pr view https://github.com/o/r/pull/1 --json headRefOid -q .headRefOid
+pr view https://github.com/o/r/pull/1 --json state,isDraft,mergeable,mergeStateStatus,headRefOid,baseRefName,statusCheckRollup
+api repos/o/r/branches/main
+api --paginate repos/o/r/rules/branches/main
+pr merge 1 --repo o/r --match-head-commit 0cf596a30339cfe67fd4a34b3c5d88e6ffcb3ef5 --squash
+api graphql -f query=query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$number){state merged isInMergeQueue baseRefName}}} -F owner=o -F repo=r -F number=1 --jq .data.repository.pullRequest | "state=" + (.state // ""), "merged=" + (.merged | tostring), "queued=" + (.isInMergeQueue | tostring), "base=" + (.baseRefName // "")
+api graphql -f query=query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$number){state merged}}} -F owner=o -F repo=r -F number=1 --jq .data.repository.pullRequest | "state=" + (.state // ""), "merged=" + (.merged | tostring)

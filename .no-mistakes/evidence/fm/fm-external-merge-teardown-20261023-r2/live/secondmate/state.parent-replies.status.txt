@@ -1,0 +1,2 @@
+done [key=child-pr-task-a] [at=1792827301]: child task-a PR ready: https://github.com/o/r/pull/1 mode=no-mistakes
+done [key=merged-task-a] [at=1792827302]: merged task-a https://github.com/o/r/pull/1

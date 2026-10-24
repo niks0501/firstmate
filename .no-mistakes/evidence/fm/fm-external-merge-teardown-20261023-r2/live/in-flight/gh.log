@@ -1,0 +1,23 @@
+pr view https://github.com/o/r/pull/1 --json isDraft
+pr view https://github.com/o/r/pull/1 --json headRefOid -q .headRefOid
+api graphql -f query=query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$number){state merged}}} -F owner=o -F repo=r -F number=1 --jq .data.repository.pullRequest | "state=" + (.state // ""), "merged=" + (.merged | tostring)
+api repos/o/r/pulls/1
+api repos/o/r
+api repos/o/r/pulls/1/comments?per_page=100 --paginate --slurp
+api repos/o/r/commits/8a175b0a9c2ae5e5a6a6b20935bbcb4e905f34ed/statuses?per_page=100 --paginate --slurp
+api repos/o/r/issues/1/comments?per_page=100 --paginate --slurp
+api repos/o/r/pulls/1/reviews?per_page=100 --paginate --slurp
+api repos/o/r/commits/8a175b0a9c2ae5e5a6a6b20935bbcb4e905f34ed/check-runs?filter=all&per_page=100 --paginate --slurp
+pr view https://github.com/o/r/pull/1 --json headRefOid,reviewDecision
+pr view https://github.com/o/r/pull/1 --json state -q .state
+api graphql -f query=query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$number){state merged}}} -F owner=o -F repo=r -F number=1 --jq .data.repository.pullRequest | "state=" + (.state // ""), "merged=" + (.merged | tostring)
+api graphql -f query=query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$number){state merged}}} -F owner=o -F repo=r -F number=1 --jq .data.repository.pullRequest | "state=" + (.state // ""), "merged=" + (.merged | tostring)
+api repos/o/r/pulls/1
+api repos/o/r/pulls/1/reviews?per_page=100 --paginate --slurp
+api repos/o/r/issues/1/comments?per_page=100 --paginate --slurp
+api repos/o/r/commits/8a175b0a9c2ae5e5a6a6b20935bbcb4e905f34ed/statuses?per_page=100 --paginate --slurp
+api repos/o/r/pulls/1/comments?per_page=100 --paginate --slurp
+api repos/o/r/commits/8a175b0a9c2ae5e5a6a6b20935bbcb4e905f34ed/check-runs?filter=all&per_page=100 --paginate --slurp
+api repos/o/r
+pr view https://github.com/o/r/pull/1 --json headRefOid,reviewDecision
+pr view https://github.com/o/r/pull/1 --json state -q .state

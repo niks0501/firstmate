@@ -1,0 +1,55 @@
+===== scenario: self-merge
+--- fm-pr-merge.sh rc=0
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up
+PASS merge entrypoint output reports the automatic cleanup to its caller
+PASS durable merge notice carries the cleanup outcome
+PASS the finished lane's records were retired by the cleanup
+PASS the lane's treehouse slot was really returned to the pool
+PASS the lane's tmux window was really closed
+PASS the merge-notification identity survived the cleanup
+===== scenario: poll-merge
+--- fm-watch.sh rc=0
+PASS the watcher's merge notice reports the automatic cleanup
+PASS the poll-detected merge retired the finished direct report
+PASS the durable cleanup notice keeps the merge identity key
+PASS the durable row presented for this merge key is the cleanup notice
+===== scenario: refused
+--- fm-pr-merge.sh rc=0
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; automatic cleanup refused: REFUSED: worktree /tmp/fm-lab-refused.Ia1bLW/treehouse/.treehouse/proj-bddde1/1/proj has uncommitted changes.
+PASS the merge entrypoint surfaces the guarded refusal reason
+PASS the durable notice carries the guarded refusal reason
+PASS the refused lane kept its records (nothing was forced)
+PASS the unlanded work was not discarded by the refused cleanup
+PASS the refused lane's endpoint stayed open
+===== scenario: secondmate
+--- fm-pr-merge.sh (secondmate home) rc=0
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+PASS a secondmate home's merge output keeps the plain notice
+PASS the secondmate still reports the plain merge upward
+PASS the upward report carries no cleanup sentence
+PASS the secondmate lane was not auto-torn down
+===== scenario: in-flight
+--- fm-watch.sh (in-flight lane) rc=0
+PASS the in-flight lane still surfaces the merge notice
+PASS an in-flight lane keeps today's plain merge notice
+PASS the in-flight lane was left in place
+===== scenario: deliverable-mismatch
+--- fm-watch.sh (deliverable mismatch) rc=0
+PASS the merge of a lane whose status names another PR is still surfaced
+PASS a lane without its merged deliverable on file keeps the plain notice
+PASS the mismatched-deliverable lane was left in place
+===== scenario: duplicate
+--- fm-watch.sh (first merged observation) rc=0
+--- fm-watch.sh (duplicate observation) rc=0
+PASS the duplicate merged poll published no second merge notice
+PASS the watcher recognised the duplicate merge by its durable identity
+PASS the merge identity stayed durable across the duplicate observation
+===== scenario: prompt
+--- fm-branch-prompt.sh rc=0 bytes=39971
+PASS the emitted supervision prompt covers a cleanup the merge notice reports
+RESULT: all assertions passed

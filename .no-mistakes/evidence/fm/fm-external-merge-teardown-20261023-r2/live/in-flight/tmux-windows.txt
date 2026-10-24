@@ -1,0 +1,1 @@
+0: fm-task-a* (1 panes) [80x24] [layout b25d,80x24,0,0,0] @0 (active)

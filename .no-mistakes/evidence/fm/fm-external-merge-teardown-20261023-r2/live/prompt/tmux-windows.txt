@@ -1,0 +1,1 @@
+error connecting to /tmp/fm-lab-prompt.uuoJxo/tmux/tmux-1000/default (No such file or directory)

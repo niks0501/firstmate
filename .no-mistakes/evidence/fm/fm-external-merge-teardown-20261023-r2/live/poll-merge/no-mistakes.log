@@ -1,0 +1,10 @@
+axi status
+axi
+axi status --run RUNFIXTURE
+axi status
+axi
+axi status --run RUNFIXTURE
+axi status
+axi
+axi status --run RUNFIXTURE
+axi status

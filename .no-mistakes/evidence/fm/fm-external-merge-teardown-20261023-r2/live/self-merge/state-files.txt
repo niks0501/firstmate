@@ -1,0 +1,10 @@
+.guard-watcher-stale-banner
+.last-watcher-beat
+.wake-queue
+.wake-queue.seq
+.watcher-down
+contributions.check-trust
+contributions.check.sh
+home-summary.json
+task-a.pr-poll-merge-notified
+terminal-outcomes

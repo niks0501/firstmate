@@ -1,0 +1,3 @@
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; automatic cleanup refused: error: refusing fleet lifecycle from inside a no-mistakes gate worktree (/home/aki/.no-mistakes/repos/bab179a0832d.git)

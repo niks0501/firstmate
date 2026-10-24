@@ -1,0 +1,2 @@
+1792827293	3	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external
+1792827297	4	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external; lane automatically cleaned up

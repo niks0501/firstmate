@@ -1,0 +1,38 @@
+scenario=finished-lane-self-merge
+merge_entrypoint_stdout:
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up
+merge_entrypoint_stderr:
+verified: https://github.com/o/r/pull/1 is open and mergeable, with every unwaived required check reported and every unwaived check green at head 0123456789abcdef0123456789abcdef01234567
+provider_observation:
+provider=real-treehouse-in-isolated-pool
+target=/tmp/fm-pr-check-security.bNLQsl/self-merge-auto-teardown/treehouse-pool/.treehouse/project-6efd6e/1/project
+branch_before_return=detached
+local_branch_fm/task_before_return=absent
+return_result=success
+returned_slot_treehouse_status:
+A new version of treehouse is available: v3.1.5 → v3.1.6
+Run "treehouse update" to update
+
+base  main  (repository default)
+1     available    /tmp/fm-pr-check-security.bNLQsl/self-merge-auto-teardown/treehouse-pool/.treehouse/project-6efd6e/1/project  (detached)
+worktree_path_exists_as_available_pool_slot=yes
+worktree_clean_after_return=yes
+task_branch_exists_after_return=no
+task_meta_exists_after_cleanup=no
+task_status_exists_after_cleanup=no
+
+scenario=dirty-lane-cleanup-refusal
+merge_entrypoint_stdout:
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/2 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/2; automatic cleanup refused: REFUSED: worktree /tmp/fm-pr-check-security.bNLQsl/live-refused-auto-teardown/treehouse-pool/.treehouse/project-5bfc7f/1/project has uncommitted changes.
+merge_entrypoint_stderr:
+verified: https://github.com/o/r/pull/2 is open and mergeable, with every unwaived required check reported and every unwaived check green at head 0123456789abcdef0123456789abcdef01234567
+task_meta_exists_after_refusal=yes
+task_status_exists_after_refusal=yes
+worktree_exists_after_refusal=yes
+unlanded_file_preserved=yes
+local_branch_fm/task=present
+provider_return_called=no

@@ -1,0 +1,7 @@
+ok - a secondmate-home lane keeps the plain merge notice and never reaches teardown
+ok - an in-flight lane keeps the plain merge notice and never reaches teardown
+ok - a done lane without its recorded deliverable keeps the plain notice
+ok - a non-ship record keeps the plain merge notice and never reaches teardown
+ok - the watcher attempts guarded cleanup only after a finished merge and surfaces its refusal reason
+ok - a cleanup keeps the merge identity durable, so a late duplicate report cannot overwrite the cleanup notice
+ok - a different merged PR for the same task gets its own first notification

@@ -1,0 +1,13 @@
+=== caller-visible merge.out ===
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up
+=== merge.err ===
+verified: https://github.com/o/r/pull/1 is open and mergeable, with every unwaived required check reported and every unwaived check green at head 0123456789abcdef0123456789abcdef01234567
+=== durable wake rows for merged-task-a ===
+1793011128	1	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1
+1793011130	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up
+=== task record ===
+task-a.meta absent (lane cleaned)
+=== merge marker (durable dedupe identity) ===
+-rw------- 1 aki aki 53 Oct 26 18:38 /tmp/fm-pr-check-security.wS1OmG/self-merge-auto-teardown/home/state/task-a.pr-poll-merge-notified

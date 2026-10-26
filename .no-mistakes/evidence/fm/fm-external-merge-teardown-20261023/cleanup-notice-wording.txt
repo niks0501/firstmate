@@ -1,0 +1,4 @@
+refused notice:
+check: merge landed: task-a https://github.com/o/r/pull/1; automatic cleanup refused: REFUSED: landed-work safety check declined
+cleaned notice:
+check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up

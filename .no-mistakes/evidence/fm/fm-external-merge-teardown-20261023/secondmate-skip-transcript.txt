@@ -1,0 +1,3 @@
+FM_MERGE_OUTCOME_CLEANUP=skipped
+task-a.meta preserved (correct: no auto-teardown in secondmate home)
+notice: check: merge landed: task-a https://github.com/o/r/pull/1

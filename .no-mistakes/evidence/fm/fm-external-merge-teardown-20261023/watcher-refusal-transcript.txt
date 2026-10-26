@@ -1,0 +1,7 @@
+=== watcher stdout ===
+check: /tmp/fm-pr-check-security.wS1OmG/watcher-auto-teardown-refused/home/state/task-a.check.sh: merged; automatic cleanup refused: REFUSED: tmux endpoint 'fm-task-a' is malformed or does not belong to task task-a; preserving task state.
+=== watcher stderr ===
+=== durable wake rows ===
+1793011131	1	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external
+1793011133	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external; automatic cleanup refused: REFUSED: tmux endpoint 'fm-task-a' is malformed or does not belong to task task-a; preserving task state.
+task-a.meta preserved (refusal never forces)

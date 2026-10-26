@@ -1,0 +1,46 @@
+=== S1: first reconcile publishes ===
+reconciled: published=1 started=0 stopped=0 uncertain=0 failed=0
+PASS: S1 first reconcile published=1
+wake rows after first: 1
+PASS: S1 exactly one wake row
+1792999780	1	check	procevent:src-cut:7	check: procevent lavish src-cut 7
+PASS: S1 payload identity
+=== S1b: second reconcile while queued publishes 0, no duplicate ===
+reconciled: published=0 started=0 stopped=0 uncertain=0 failed=0
+PASS: S1b second reconcile published=0 while queued
+PASS: S1b queue unchanged while suppressing duplicate
+PASS: S1b still exactly one row
+=== S1c: burst of 3 reconciles leaves exactly one row ===
+PASS: S1c burst leaves one row
+=== S2: drain queue, reconcile republishs ===
+reconciled: published=1 started=0 stopped=0 uncertain=0 failed=0
+PASS: S2 consumed wake republished published=1
+PASS: S2 republished identity preserved
+PASS: S2 republication single row
+PASS: S2 no duplicate durable copy
+=== S3: handled stays quiet ===
+handled: src-cut 7
+PASS: S3 handled acknowledged
+PASS: S3 handled marker durable
+reconciled: published=0 started=0 stopped=0 uncertain=0 failed=0
+PASS: S3 reconcile after handled published=0
+PASS: S3 queue stays absent after handled
+already-handled: src-cut 7
+PASS: S3 repeat already-handled
+PASS: S3 repeat did not re-authorize
+=== S4: terminal result queued once ===
+not-autohandled: ends-src (left for the handler; still unacknowledged)
+retired: ends-src (adapter classified the captured result terminal)
+captured: /tmp/fm-procevent-term.FTYlK4/state/procevent-inbox/ends-src.1.result
+PASS: S4 terminal captured
+PASS: S4 terminal retired
+reconciled: published=0 started=0 stopped=0 uncertain=0 failed=0
+PASS: S4 queued terminal not republished (published=0)
+PASS: S4 terminal exactly one row
+reconciled: published=1 started=0 stopped=0 uncertain=0 failed=0
+PASS: S4 drained terminal republished
+handled: ends-src 1
+PASS: S4 terminal handled
+reconciled: published=0 started=0 stopped=0 uncertain=0 failed=0
+PASS: S4 terminal quiet after handled
+=== SUMMARY pass=24 fail=0 ===

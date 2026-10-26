@@ -1,0 +1,1 @@
+check: /tmp/fm-pr-check-security.2MUGgj/evidence-refusal/home/state/task-a.check.sh: merged; automatic cleanup refused: REFUSED: tmux endpoint 'fm-task-a' is malformed or does not belong to task task-a; preserving task state.

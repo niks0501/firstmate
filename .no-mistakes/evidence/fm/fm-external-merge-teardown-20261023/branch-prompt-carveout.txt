@@ -1,0 +1,1 @@
+When that wake reports `lane automatically cleaned up`, this home already ran that cleanup: run no teardown for it and report that the lane is closed, with the PR's URL.

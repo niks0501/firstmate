@@ -1,0 +1,3 @@
+cleanup=skipped
+meta_preserved=yes
+notice=check: merge landed: task-a https://github.com/o/r/pull/1

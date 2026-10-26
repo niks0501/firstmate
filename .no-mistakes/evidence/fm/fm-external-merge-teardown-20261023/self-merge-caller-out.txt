@@ -1,0 +1,3 @@
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up

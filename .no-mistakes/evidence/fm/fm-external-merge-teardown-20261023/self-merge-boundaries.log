@@ -1,0 +1,13 @@
+armed: state/task-a.check.sh
+verified: https://github.com/o/r/pull/1 is merged (state=MERGED, merged=true, isInMergeQueue=false)
+check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up
+1792987063	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1; lane automatically cleaned up
+cleanup=skipped
+meta_preserved=yes
+notice=check: merge landed: task-a https://github.com/o/r/pull/1
+cleanup=skipped
+meta_preserved=yes
+notice=check: merge landed: task-a https://github.com/o/r/pull/1
+cleanup=skipped
+notice=check: merge landed: task-a https://github.com/o/r/pull/1
+ok - evidence capture for self-merge caller output and guard boundaries

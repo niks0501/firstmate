@@ -1,0 +1,5 @@
+check: /tmp/fm-pr-check-security.2MUGgj/evidence-refusal/home/state/task-a.check.sh: merged; automatic cleanup refused: REFUSED: tmux endpoint 'fm-task-a' is malformed or does not belong to task task-a; preserving task state.
+---WAKE---
+1792987076	2	check	merged-task-a-https://github.com/o/r/pull/1	check: merge landed: task-a https://github.com/o/r/pull/1 external; automatic cleanup refused: REFUSED: tmux endpoint 'fm-task-a' is malformed or does not belong to task task-a; preserving task state.
+meta_exists_after=yes
+ok - refusal capture preserved

@@ -1,0 +1,4 @@
+ok - the watcher attempts guarded cleanup only after a finished merge and surfaces its refusal reason
+ok - merged notices auto-clean only finished direct reports with recorded deliverables, leave no retired task state, and surface guarded refusals without force
+ok - a merge this home performs itself runs the guarded cleanup of a finished direct report and publishes its outcome durably
+ok - a cleanup keeps the merge identity durable, so a late duplicate report cannot overwrite the cleanup notice

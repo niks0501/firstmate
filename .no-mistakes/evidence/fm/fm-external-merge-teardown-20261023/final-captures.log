@@ -1,0 +1,3 @@
+When that wake reports `lane automatically cleaned up`, this home already ran that cleanup: run no teardown for it and report that the lane is closed, with the PR's URL.
+When the merge notice for that task reports `lane automatically cleaned up`, this home already ran its teardown: run none for it, and record it as closed with its PR URL.
+ok - final captures for identity-only decline and prompt carve-outs

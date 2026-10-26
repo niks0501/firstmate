@@ -1,0 +1,1 @@
+When the merge notice for that task reports `lane automatically cleaned up`, this home already ran its teardown: run none for it, and record it as closed with its PR URL.

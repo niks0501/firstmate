@@ -1,0 +1,7 @@
+ok - the watcher attempts guarded cleanup only after a finished merge and surfaces its refusal reason
+ok - merged notices auto-clean only finished direct reports with recorded deliverables, leave no retired task state, and surface guarded refusals without force
+ok - legacy lanes without incarnation identity keep the plain merge notice and are never auto-torn down
+ok - a duplicate merge without disposition leaves cleanup unattributed instead of claiming automatic cleanup
+ok - a merge this home performs itself runs the guarded cleanup of a finished direct report and publishes its outcome durably
+ok - automatic cleanup preserves a relaunched incarnation and refuses with its identity
+ok - a cleanup keeps the merge identity durable, so a late duplicate report cannot overwrite the cleanup notice

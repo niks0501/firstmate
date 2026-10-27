@@ -1,0 +1,62 @@
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <aki@Aki.localdomain>) not allowed
+=== A: in-flight fixture ===
+window=firstmate:fm-task-a
+endpoint_task_id=task-a
+worktree=/tmp/fm-live-inflight.9vL1K9/wt
+project=/tmp/fm-live-inflight.9vL1K9/wt
+kind=ship
+mode=no-mistakes
+spawn_gen=sinflight
+pr=https://github.com/o/r/pull/1
+working: still building
+A cleanup=skipped detail=
+A notice=check: merge landed: task-a https://github.com/o/r/pull/1
+A PASS: in-flight kept plain notice, no teardown
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <aki@Aki.localdomain>) not allowed
+=== B: secondmate fixture ===
+schema=fm-secondmate-parent.v1
+route=remote
+B cleanup=skipped
+B notice=check: merge landed: task-a https://github.com/o/r/pull/1
+B PASS: secondmate kept plain notice
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <aki@Aki.localdomain>) not allowed
+=== C: mismatched-PR fixture ===
+C cleanup=skipped
+C PASS: mismatched deliverable kept plain notice
+MANUAL LIVE ALL PASS

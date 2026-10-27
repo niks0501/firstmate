@@ -1,0 +1,20 @@
+=== legacy fixture (no spawn_gen) ===
+window=firstmate:fm-task-a
+endpoint_task_id=task-a
+worktree=/tmp/fm-live-legacy.8FJXD6/wt
+project=/tmp/fm-live-legacy.8FJXD6/wt
+kind=ship
+mode=no-mistakes
+branch=fm/task
+pr_head=4ddceb20e21f0c201ee8f834a8951d8660f81888
+project=/tmp/fm-live-legacy.8FJXD6/wt
+pr=https://github.com/o/r/pull/1
+--- crew-state (real, with fake no-mistakes) ---
+state: unknown · source: none · backend target gone: firstmate:fm-task-a
+--- auto_teardown (real lib, real crew-state, real teardown path) ---
+cleanup=skipped detail=
+check: merge landed: task-a https://github.com/o/r/pull/1
+--- record still present? ---
+-rw-r--r-- 1 aki aki 290 Oct 27 12:15 /tmp/fm-live-legacy.8FJXD6/home/state/task-a.meta
+-rw-r--r-- 1 aki aki  52 Oct 27 12:15 /tmp/fm-live-legacy.8FJXD6/home/state/task-a.status
+LEGACY PASS: record preserved, no teardown
